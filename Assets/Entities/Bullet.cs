@@ -22,6 +22,13 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        _damageable = collision.transform.GetComponent<IDamageable>();
+
+        if (_damageable != null)
+        {
+            _damageable.TakeDamage(collision.contacts[0].point, transform.forward, _strength);
+        }
+
         Destroy();
     }
     #endregion
@@ -47,6 +54,12 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float _destroyDuration;
 
+    [SerializeField] private ParticleSystem _particle;
+
+    [SerializeField] private GameObject _mesh;
+
+    private IDamageable _damageable;
+
     public event UnityAction BeforeDestroyed;
     public event UnityAction AfterDestroyed;
     #endregion
@@ -68,6 +81,9 @@ public class Bullet : MonoBehaviour
 
         _rigidbody.isKinematic = true;
         _collider.enabled = false;
+        _mesh.SetActive(false);
+
+        _particle.Play();
 
         ChangeState(States.Destroying);
         StartCoroutine(DestroyCoroutine());
