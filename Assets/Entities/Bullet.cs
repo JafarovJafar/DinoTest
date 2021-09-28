@@ -5,11 +5,6 @@ using UnityEngine.Events;
 public class Bullet : MonoBehaviour
 {
     #region Unity API
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         switch (_currentState)
@@ -34,7 +29,6 @@ public class Bullet : MonoBehaviour
     #endregion
 
     #region Vars
-
     private enum States
     {
         Default,
@@ -46,17 +40,14 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Collider _collider;
+    [SerializeField] private GameObject _mesh;
+    [SerializeField] private ParticleSystem _particle;
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _strength;
-
     private Vector3 _moveVector = new Vector3(0, 0, 1); // тут захардкодил потому что пуля всегда будет двигаться вперед и нет смысла выносить куда-то его получение
 
     [SerializeField] private float _destroyDuration;
-
-    [SerializeField] private ParticleSystem _particle;
-
-    [SerializeField] private GameObject _mesh;
 
     private IDamageable _damageable;
 
