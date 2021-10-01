@@ -114,16 +114,9 @@ public class Player : MonoBehaviour
     {
         if (_currentWeapon.CanShoot)
         {
-            Debug.Log(targetPosition);
-
             GameObject bullet = _bulletsPool.GetItem();
             bullet.transform.position = _currentWeapon.MuzzleTransform.position;
-            bullet.transform.rotation = Quaternion.LookRotation(targetPosition);
-
-            Debug.Log(bullet.name);
-
-            IPoolItem poolItem = bullet.GetComponent<IPoolItem>();
-            poolItem.Enable();
+            bullet.transform.LookAt(targetPosition);
         }
     }
     #endregion

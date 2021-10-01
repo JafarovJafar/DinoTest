@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Bullet : MonoBehaviour, IPoolItem
+public class Bullet : MonoBehaviour
 {
     #region Unity API
     private void Update()
@@ -26,6 +26,15 @@ public class Bullet : MonoBehaviour, IPoolItem
 
         Destroy();
     }
+
+    public void OnEnable()
+    {
+        _rigidbody.isKinematic = false;
+        _collider.enabled = true;
+        _mesh.SetActive(true);
+
+        ChangeState(States.Default);
+    }
     #endregion
 
     #region Vars
@@ -45,7 +54,6 @@ public class Bullet : MonoBehaviour, IPoolItem
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _strength;
-    private Vector3 _moveVector = new Vector3(0, 0, 1); // тут захардкодил потому что пуля всегда будет двигаться вперед и нет смысла выносить куда-то его получение
 
     [SerializeField] private float _destroyDuration;
 
@@ -58,7 +66,7 @@ public class Bullet : MonoBehaviour, IPoolItem
     #region Methods
     private void Move()
     {
-        _rigidbody.velocity = _moveVector * _moveSpeed;
+        _rigidbody.velocity = transform.forward * _moveSpeed;
     }
 
     private void ChangeState(States state)
@@ -87,15 +95,6 @@ public class Bullet : MonoBehaviour, IPoolItem
         AfterDestroyed?.Invoke();
 
         gameObject.SetActive(false);
-    }
-
-    public void Enable()
-    {
-        _rigidbody.isKinematic = false;
-        _collider.enabled = true;
-        _mesh.SetActive(true);
-
-        ChangeState(States.Default);
     }
     #endregion
 }

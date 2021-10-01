@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour
             }
             else
             {
-                _shootPosition = _camera.transform.forward * _shootDistance;
+                _shootPosition = _ray.origin + _ray.direction * _shootDistance;
             }
 
             _player.TryShoot(_shootPosition);

@@ -21,7 +21,6 @@ public class ObjectPool : MonoBehaviour
         }
 
         _tempPoolItem.SetActive(true);
-        _tempPoolItem.GetComponent<IPoolItem>().Enable();
 
         return _tempPoolItem;
     }
