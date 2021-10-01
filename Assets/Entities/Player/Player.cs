@@ -19,16 +19,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform _rootTransform;
 
-    private readonly string _idleAnimationName = "Idle";
-    private readonly string _runAnimationName = "Run";
-
     [SerializeField] private Animator _animator;
-
-    public bool MouseButtonPressed;
 
     [SerializeField] private Weapon _currentWeapon;
 
     [SerializeField] private ObjectPool _bulletsPool;
+
+    private GameObject _bulletGO;
+
+    private readonly string _idleAnimationName = "Idle";
+    private readonly string _runAnimationName = "Run";
 
     public event UnityAction Finished;
     #endregion
@@ -114,9 +114,9 @@ public class Player : MonoBehaviour
     {
         if (_currentWeapon.CanShoot)
         {
-            GameObject bullet = _bulletsPool.GetItem();
-            bullet.transform.position = _currentWeapon.MuzzleTransform.position;
-            bullet.transform.LookAt(targetPosition);
+            _bulletGO = _bulletsPool.GetItem();
+            _bulletGO.transform.position = _currentWeapon.MuzzleTransform.position;
+            _bulletGO.transform.LookAt(targetPosition);
 
             _currentWeapon.StartReloading();
         }
