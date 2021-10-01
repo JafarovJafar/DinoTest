@@ -117,6 +117,8 @@ public class Player : MonoBehaviour
             GameObject bullet = _bulletsPool.GetItem();
             bullet.transform.position = _currentWeapon.MuzzleTransform.position;
             bullet.transform.LookAt(targetPosition);
+
+            _currentWeapon.StartReloading();
         }
     }
     #endregion
