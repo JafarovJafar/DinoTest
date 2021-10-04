@@ -23,8 +23,6 @@ public class Background : MonoBehaviour
     private void DoFade(float value, float duration, bool immediate = false, UnityAction Finished = null)
     {
         Sequence sequence = DOTween.Sequence();
-
-        //sequence.Append(_image.DOFade(0, 0));
         sequence.Append(_image.DOFade(value, immediate ? 0f : duration));
 
         sequence.AppendCallback(() =>
