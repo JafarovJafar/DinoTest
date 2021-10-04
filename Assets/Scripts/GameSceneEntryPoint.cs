@@ -6,7 +6,6 @@ public class GameSceneEntryPoint : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private PlayerInput _playerInput;
-
     [SerializeField] private UI _ui;
 
     private void Start()
