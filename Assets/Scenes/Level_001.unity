@@ -156,7 +156,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 128}
-  m_SizeDelta: {x: 1024, y: 256}
+  m_SizeDelta: {x: 1280, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40531258
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -179,7 +179,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 75
+    m_FontSize: 100
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -472,7 +472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f489ccd3340bb6d4486af23321bd638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
 --- !u!65 &349856820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1099,7 +1098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f489ccd3340bb6d4486af23321bd638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
 --- !u!65 &671059240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1185,7 +1183,7 @@ Transform:
   m_Children:
   - {fileID: 1411850792}
   - {fileID: 1760424336}
-  - {fileID: 1121368571}
+  - {fileID: 1673368726}
   - {fileID: 72785796}
   - {fileID: 1959111473}
   - {fileID: 712664265}
@@ -1923,7 +1921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f489ccd3340bb6d4486af23321bd638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
 --- !u!65 &1011461208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2564,12 +2561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6327e24d6b6f1984fbe4327b7feaeecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1121368571 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6155949197690184010, guid: 9d34d1418bd9330408ba9d7766b9cf2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6155949196019054044}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1186433868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,7 +3155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f489ccd3340bb6d4486af23321bd638e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
 --- !u!65 &1401192494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3624,7 +3614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1599280196}
   _camera: {fileID: 2144598110}
-  _shootDistance: 10
+  _shootDistance: 50
 --- !u!1 &1601145658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,6 +3775,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1673368726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6155949197690184010, guid: 9d34d1418bd9330408ba9d7766b9cf2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6155949196019054044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1752979147
 GameObject:
   m_ObjectHideFlags: 0

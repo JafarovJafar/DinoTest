@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _defaultHealth;
     private float _currentHealth;
 
-    [SerializeField] private CharacterController _controller;
+    [SerializeField] private Collider _collider;
     [SerializeField] private Animator _animator;
 
     private readonly string _deathAnimationName = "Death";
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Destroy()
     {
-        _controller.enabled = false;
+        _collider.enabled = false;
         _animator.Play(_deathAnimationName);
 
         Destroyed?.Invoke();
