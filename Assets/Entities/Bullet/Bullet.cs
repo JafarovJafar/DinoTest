@@ -33,6 +33,8 @@ public class Bullet : MonoBehaviour
         _collider.enabled = true;
         _mesh.SetActive(true);
 
+        _liveCoroutine = StartCoroutine(LiveCoroutine());
+
         ChangeState(States.Default);
     }
     #endregion
@@ -52,6 +54,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject _mesh;
     [SerializeField] private ParticleSystem _particle;
 
+    [SerializeField] private float _maxLiveDuration;
+    private Coroutine _liveCoroutine;
+    
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _strength;
 
@@ -76,6 +81,8 @@ public class Bullet : MonoBehaviour
 
     private void Destroy()
     {
+        StopCoroutine(_liveCoroutine);
+
         BeforeDestroyed?.Invoke();
 
         _rigidbody.isKinematic = true;
@@ -95,6 +102,13 @@ public class Bullet : MonoBehaviour
         AfterDestroyed?.Invoke();
 
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator LiveCoroutine()
+    {
+        yield return new WaitForSeconds(_maxLiveDuration);
+
+        Destroy();
     }
     #endregion
 }

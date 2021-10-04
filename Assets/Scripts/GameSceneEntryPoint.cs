@@ -1,17 +1,42 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameSceneEntryPoint : MonoBehaviour
 {
-    [SerializeField] private Waypoint _firstWaypoint;
     [SerializeField] private Player _player;
+    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private UI _ui;
 
     private void Start()
     {
-        _player.StartMovement();
+        DOTween.Init();
+
+        _ui.ShowLogo();
+        _ui.StartButtonPressed += () =>
+        {
+            _ui.HideLogo(() =>
+            {
+                _playerInput.Enable();
+                StartPlayerMovement();
+            });
+        };
+        _ui.RestartButtonPressed += Restart;
 
         _player.Finished += () =>
         {
-            Debug.Log(90);
+            _playerInput.Disable();
+            _ui.ShowLevelFinish();
         };
+    }
+
+    private void StartPlayerMovement()
+    {
+        _player.StartMovement();
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(CONSTANTS.GAME_SCENE_NAME);
     }
 }
