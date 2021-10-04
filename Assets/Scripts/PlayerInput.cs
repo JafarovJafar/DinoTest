@@ -11,13 +11,23 @@ public class PlayerInput : MonoBehaviour
     private Ray _ray;
     private Vector3 _shootPosition;
 
+    public void Enable()
+    {
+        enabled = true;
+    }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            Physics.Raycast(_ray, out _hit, _shootDistance);
+            Physics.Raycast(_ray, out _hit);
 
             if (_hit.transform != null)
             {

@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Waypoint TargetWaypoint => _waypoints[_targetWaypointIndex];
 
     private Vector3 _moveVector;
+    private Quaternion _goalRotation;
 
     [SerializeField] private Transform _rootTransform;
 
@@ -64,7 +65,10 @@ public class Player : MonoBehaviour
 
     private IEnumerator WaitForCanPassCoroutine()
     {
-        PlayAnimation(_idleAnimationName);
+        if (!CurrentWaypoint.CanPass)
+        {
+            PlayAnimation(_idleAnimationName);
+        }
 
         while (!CurrentWaypoint.CanPass)
         {
@@ -88,7 +92,10 @@ public class Player : MonoBehaviour
             }
 
             transform.Translate(_moveVector);
-            _rootTransform.rotation = Quaternion.LookRotation(_moveVector);
+            _goalRotation = Quaternion.LookRotation(_moveVector, transform.up);
+            _goalRotation.x = 0;
+            _goalRotation.z = 0;
+            _rootTransform.rotation = _goalRotation;
 
             if (transform.position == TargetWaypoint.transform.position)
             {
