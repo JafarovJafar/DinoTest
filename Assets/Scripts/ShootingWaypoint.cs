@@ -28,5 +28,5 @@ public class ShootingWaypoint : Waypoint // кажется нейминг не �
         }
     }
 
-    [SerializeField] private List<Enemy> _enemies = new List<Enemy>();
+    private List<Enemy> _enemies = new List<Enemy>();
 }
